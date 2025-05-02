@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post-Quantum Cryptography Demo</title>
+
+    <!-- Bootstrap CSS for styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
     <style>
+        /* Center and limit container width */
         .container {
             max-width: 800px;
             margin-top: 50px;
         }
+
+        /* Styling for displaying keys and messages */
         .key-display {
             background-color: #f8f9fa;
             padding: 15px;
             border-radius: 5px;
             margin-bottom: 20px;
-            word-break: break-all;
+            word-break: break-all; /* Prevent overflow */
         }
+
+        /* Success and error message styling */
         .success {
             color: green;
         }
@@ -26,55 +36,77 @@
     </style>
 </head>
 <body>
+    <!-- Main Container -->
     <div class="container">
+        <!-- Title -->
         <h1 class="text-center mb-4">Post-Quantum Cryptography Demo</h1>
-        
+
+        <!-- Key Generation Section -->
         <div class="card mb-4">
             <div class="card-header">
                 <h2>Key Generation</h2>
             </div>
             <div class="card-body">
+                <!-- Button to trigger key pair generation -->
                 <button id="generate-btn" class="btn btn-primary">Generate Keys</button>
+
+                <!-- Output areas for public and private keys -->
                 <div class="mt-3">
                     <h5>Public Key:</h5>
                     <div id="public-key" class="key-display"></div>
+
                     <h5>Private Key:</h5>
                     <div id="private-key" class="key-display"></div>
                 </div>
             </div>
         </div>
 
+        <!-- Encryption Section -->
         <div class="card mb-4">
             <div class="card-header">
                 <h2>Encryption</h2>
             </div>
             <div class="card-body">
+                <!-- Input for the message to encrypt -->
                 <div class="mb-3">
                     <label for="message" class="form-label">Message to Encrypt:</label>
                     <input type="text" id="message" class="form-control">
                 </div>
+
+                <!-- Button to trigger encryption -->
                 <button id="encrypt-btn" class="btn btn-primary">Encrypt</button>
+
+                <!-- Output areas for ciphertext and shared secret -->
                 <div class="mt-3">
                     <h5>Ciphertext:</h5>
                     <div id="ciphertext" class="key-display"></div>
+
                     <h5>Shared Secret:</h5>
                     <div id="shared-secret" class="key-display"></div>
                 </div>
             </div>
         </div>
 
+        <!-- Decryption Section -->
         <div class="card mb-4">
             <div class="card-header">
                 <h2>Decryption</h2>
             </div>
             <div class="card-body">
+                <!-- Button to trigger decryption -->
                 <button id="decrypt-btn" class="btn btn-primary">Decrypt</button>
+
+                <!-- Area to display decryption result -->
                 <div id="result" class="mt-3"></div>
             </div>
         </div>
     </div>
 
+    <!-- Bootstrap JavaScript (includes Popper for tooltips, etc.) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main JavaScript logic for key generation, encryption, and decryption -->
+    <!-- Flask will replace this with the correct static file path -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
-</html> 
+</html>
