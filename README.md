@@ -20,8 +20,8 @@ A secure web application that demonstrates Post-Quantum Cryptography using the K
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/sohail9221/Post-Quantum-Cryptography-webapp.git
+cd https://github.com/sohail9221/Post-Quantum-Cryptography-webapp.git
 ```
 
 2. Create and activate a virtual environment (recommended):
