@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQC Demo - Interactive Demonstration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 76px;
+            background-color: #f8f9fa;
+        }
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            color: #1a2a6c;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #1a2a6c !important;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card-header {
+            background-color: #1a2a6c;
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 15px 20px;
+        }
+        .btn-primary {
+            background-color: #1a2a6c;
+            border-color: #1a2a6c;
+        }
+        .btn-primary:hover {
+            background-color: #0d1a4a;
+            border-color: #0d1a4a;
+        }
+        .key-display {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .result-box {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: #1a2a6c;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-shield-alt me-2"></i>PQC Demo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/demo">Demo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Interactive PQC Demonstration</h1>
+        
+        <!-- Step 1: Generate Keys -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <span class="step-number">1</span>
+                Generate Key Pair
+            </div>
+            <div class="card-body">
+                <p class="card-text">Click the button below to generate a new public/private key pair using Kyber512.</p>
+                <button id="generateBtn" class="btn btn-primary">
+                    <i class="fas fa-key me-2"></i>Generate Keys
+                </button>
+                
+                <div class="mt-4">
+                    <h5>Public Key:</h5>
+                    <div id="publicKey" class="key-display">Not generated yet</div>
+                    
+                    <h5>Private Key:</h5>
+                    <div id="privateKey" class="key-display">Not generated yet</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Encrypt Message -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <span class="step-number">2</span>
+                Encrypt Message
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="message" class="form-label">Enter your message:</label>
+                    <textarea id="message" class="form-control" rows="3" placeholder="Type your message here..."></textarea>
+                </div>
+                <button id="encryptBtn" class="btn btn-primary">
+                    <i class="fas fa-lock me-2"></i>Encrypt Message
+                </button>
+                
+                <div class="mt-4">
+                    <h5>Ciphertext:</h5>
+                    <div id="ciphertext" class="key-display">Not encrypted yet</div>
+                    
+                    <h5>Shared Secret:</h5>
+                    <div id="sharedSecret" class="key-display">Not generated yet</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Decrypt Message -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <span class="step-number">3</span>
+                Decrypt Message
+            </div>
+            <div class="card-body">
+                <p class="card-text">Click the button below to decrypt the message using the private key.</p>
+                <button id="decryptBtn" class="btn btn-primary">
+                    <i class="fas fa-unlock me-2"></i>Decrypt Message
+                </button>
+                
+                <div class="mt-4">
+                    <h5>Result:</h5>
+                    <div id="result" class="result-box">Not decrypted yet</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error" class="alert alert-danger d-none" role="alert"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
